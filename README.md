@@ -31,8 +31,15 @@ The server RENDERS the outgoing Python/Django object, serializes it into JSON, a
     client -> server: parse + de-serialize          Use BytesIO and JSONParser
     server -> client: render + serialize            Use SubjectSerializer and JSONRenderer
 
+## Check if username is taken
+
+I modified the code in this tutorial so that I have an endpoint that will check to see if a particular username is in taken.  It required commenting out the registering of a 'users' route in urls.py and then replacing the original UserViewSet class in views.py with another version that contained a method to handle ```GET```.  Here is the URL for this new endpoint:
+
+    (browser) http://127.0.0.1:8000/users/<username>/
+
 ## References
 
 [Quickstart Tutorial](https://www.django-rest-framework.org/tutorial/quickstart/#quickstart)
 [Django REST Framework](https://www.django-rest-framework.org/)
 [jakubroztocil/httpie](https://github.com/jakubroztocil/httpie) -- cURL alternative
+[The Ultimate Tutorial for Django REST Framework: CRUD (Part 1)](https://sunscrapers.com/blog/ultimate-tutorial-django-rest-framework-part-1/)
