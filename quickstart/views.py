@@ -1,4 +1,5 @@
 from django.contrib.auth.models import Group, User
+from django.http import HttpResponse
 from django.shortcuts import render
 from rest_framework import permissions, viewsets
 from rest_framework.response import Response
@@ -41,4 +42,8 @@ class UserViewSet(APIView):
             username = User.objects.get(username=username)
         except User.DoesNotExist:
             return Response({'msg': 'name_not_in_use'})
+            # Since username was not found, client *can* select this username.
+            # return HttpResponse(status=404)
         return Response({'msg': 'name_in_use'})
+        # Username was found so client *cannot* select this username.
+        # return HttpResponse(status=200)

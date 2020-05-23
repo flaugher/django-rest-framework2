@@ -12,12 +12,17 @@ This is the Quick Start tutorial from the DRF docs.
 
 Make request to API
 
-    curl -H 'Accept: application/json; indent=4' -u root:password123 http://127.0.0.1:8000/users/
+    curl [-I] -H 'Accept: application/json; indent=4' -u root:password123 http://127.0.0.1:8000/users/<username>/
+
+    Note: If your view is returning an HttpResponse object, you should include the '-I' argument above.  If you're
+    just returning a Response object, you don't need it as the DRF template will be displayed.
 
 You can also open this url in your browser.  Add a pk this time:
 
     # Be sure to login using control in upper right corner
-    (browser) http://127.0.0.1:8000/users/
+    (browser) http://127.0.0.1:8000/users/<username>/
+    # Ex.
+    (browser) http://127.0.0.1:8000/users/root/
 
 ### Serialization
 
